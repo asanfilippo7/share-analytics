@@ -856,7 +856,8 @@ export default Ember.Route.extend({
                                 "listWidgetData" : {
                                     "terms": {
                                         "field": 'tags',
-                                        "size": 10
+                                        "size": 10,
+                                        "exclude": this.get('mimeTypes') // we don't want to create buckets for any tag terms that are mime types
                                     }
                                 }
                             }
