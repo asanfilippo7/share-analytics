@@ -4,6 +4,8 @@ import Ember from 'ember';
 //
 export default Ember.Route.extend({
 
+    mimeTypes: '.*pdf|.*html', // ...etc, any filetypes that a user could want to filter out from their tag results
+    
     query: 'UC',
     gte: "1996-01-01",
     lte: (new Date()).toISOString().split('T')[0], // Set the ending date of our query to today's date, by default
@@ -541,13 +543,14 @@ export default Ember.Route.extend({
                         post_body : {
                             from: 0,
                             aggregations: {
-                                listWidgetData : {
-                                    terms : {
+                                listWidgetData: {
+                                    terms: {
                                         field: 'tags',
-                                        size: 10
+                                        size: 10,
+                                        exclude: this.get('mimeTypes') // we don't want to create buckets for any tag terms that are mime types
                                     }
-                                }
-                            }
+                                } 
+                            },
                         },
                         postBodyParams: [
                             {
@@ -1057,7 +1060,7 @@ export default Ember.Route.extend({
                         }
                         return nested[pathPart];
                     }, widget.post_body) // Uses the actual object; changes made on nested change the original.
-
+                    
                     nested_object[parameter_key] = parameter_value;
 
                 });

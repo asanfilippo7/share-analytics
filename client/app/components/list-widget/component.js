@@ -14,7 +14,12 @@ export default Ember.Component.extend({
             });
             this.set('data', data);
         } else {
-            this.processData(this.get('aggregations.listWidgetData.buckets'));
+            if(!this.get('aggregations.listWidgetData.buckets')) { // If (filtered) tag list
+                this.processData(this.get('aggregations.listWidgetData.tags.buckets'));
+            }
+            else { // If contributor list
+                this.processData(this.get('aggregations.listWidgetData.buckets'));   
+            }
         }
     },
     processData (data) {
