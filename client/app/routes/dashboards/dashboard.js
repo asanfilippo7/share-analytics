@@ -4,6 +4,8 @@ import Ember from 'ember';
 //
 export default Ember.Route.extend({
 
+    mimeTypesArray: ['pdf','html'],
+    
     mimeTypes: '.*pdf|.*html', // ...etc, any filetypes that a user could want to filter out from their tag results
     
     query: 'UC',
