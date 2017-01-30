@@ -165,7 +165,7 @@ export default Ember.Route.extend({
                                 defaultValue: "*"
                             },
                             {
-                                parameterPath: ["query", "bool", "must", 1, "range", "date", "lt"],
+                                parameterPath: ["query", "bool", "must", 1, "range", "date", "lte"],
                                 parameterName: "tillDate",
                                 defaultValue: "now/d"
                             },
@@ -446,7 +446,7 @@ export default Ember.Route.extend({
                                 parameterName: "institution"
                             },
                             {
-                                parameterPath: ["query", "bool", "must", 0, "range", "date", "lt"],
+                                parameterPath: ["query", "bool", "must", 0, "range", "date", "lte"],
                                 parameterName: "tillDate",
                                 defaultValue: "now/d"
                             },
@@ -921,7 +921,7 @@ export default Ember.Route.extend({
                                 defaultValue: "*"
                             },
                             {
-                                parameterPath: ["query", "bool", "must", 1, "range", "date", "lt"],
+                                parameterPath: ["query", "bool", "must", 1, "range", "date", "lte"],
                                 parameterName: "tillDate",
                                 defaultValue: "now/d"
                             },
